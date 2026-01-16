@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>TechNova | Registro</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+
+    <script src="https://www.gstatic.com/firebasejs/8.10.1/firebase-app.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/8.10.1/firebase-database.js"></script>
+    <link rel="stylesheet" href="cSS/style.css">
+</head>
+
+<body class="bg-slate-900 min-h-screen flex flex-col font-sans text-gray-900">
+
+    <nav class="bg-blue-700 p-4 shadow-xl">
+        <div class="max-w-6xl mx-auto flex justify-between items-center text-white">
+            <h1 class="text-2xl font-black italic">TechNova</h1>
+            <div class="space-x-4 font-semibold">
+                <a href="Index.html">Inicio</a>
+                <a href="productos.html">Productos</a>
+                <a href="registro.html" class="border-b-2">Registro</a>
+            </div>
+        </div>
+    </nav>
+
+    <div class="flex-grow flex items-center justify-center p-6">
+        <div class="bg-white p-10 rounded-3xl shadow-2xl w-full max-w-md">
+            <h2 class="text-3xl font-bold mb-2">Registro</h2>
+            <p class="text-gray-500 mb-8">Conexión con: technova-8a4fb</p>
+
+            <form id="formRegistro" class="space-y-4">
+                <input type="text" id="nombre" placeholder="Nombre completo"
+                    class="w-full p-4 bg-gray-50 border rounded-xl outline-none focus:ring-2 focus:ring-blue-500"
+                    required>
+                <input type="email" id="email" placeholder="Correo electrónico"
+                    class="w-full p-4 bg-gray-50 border rounded-xl outline-none focus:ring-2 focus:ring-blue-500"
+                    required>
+                <input type="password" id="pass" placeholder="Contraseña (mín. 6 caracteres)"
+                    class="w-full p-4 bg-gray-50 border rounded-xl outline-none focus:ring-2 focus:ring-blue-500"
+                    required>
+                <button type="submit" id="btnEnviar"
+                    class="w-full bg-blue-600 hover:bg-blue-700 text-white font-bold py-4 rounded-xl transition">GUARDAR
+                    EN LA NUBE</button>
+            </form>
+            <div id="resultado" class="mt-6 text-center font-bold hidden"></div>
+        </div>
+    </div>
+
+    <script>
+        // CONFIGURACIÓN OBTENIDA DE TU FIREBASE
+        const firebaseConfig = {
+            apiKey: "AIzaSyAnpfw-Cp7OTpErPXW3nVBCvE221E6G7t0",
+            authDomain: "technova-8a4fb.firebaseapp.com",
+            projectId: "technova-8a4fb",
+            storageBucket: "technova-8a4fb.firebasestorage.app",
+            messagingSenderId: "385691885268",
+            appId: "1:385691885268:web:839065b11b79950fafe541",
+            databaseURL: "https://technova-8a4fb-default-rtdb.firebaseio.com/"
+        };
+
+        // INICIALIZACIÓN
+        firebase.initializeApp(firebaseConfig);
+        const database = firebase.database();
+
+        // LÓGICA DE ENVÍO
+        document.getElementById('formRegistro').addEventListener('submit', function (e) {
+            e.preventDefault();
+
+            const nombreVal = document.getElementById('nombre').value;
+            const emailVal = document.getElementById('email').value;
+            const passVal = document.getElementById('pass').value;
+            const res = document.getElementById('resultado');
+            const btn = document.getElementById('btnEnviar');
+
+            if (passVal.length < 6) {
+                alert("La contraseña debe tener al menos 6 caracteres");
+                return;
+            }
+
+            btn.innerText = "PROCESANDO...";
+            btn.disabled = true;
+
+            // ENVIAR A FIREBASE
+            database.ref('usuarios').push({
+                nombre: nombreVal,
+                correo: emailVal,
+                fecha: new Date().toLocaleString()
+            })
+                .then(() => {
+                    res.innerText = "✅ ¡Datos enviados con éxito!";
+                    res.className = "mt-6 text-center font-bold text-green-600 block";
+                    btn.innerText = "GUARDAR EN LA NUBE";
+                    btn.disabled = false;
+                    this.reset();
+                })
+                .catch((error) => {
+                    res.innerText = "❌ ERROR: " + error.message;
+                    res.className = "mt-6 text-center font-bold text-red-600 block";
+                    btn.innerText = "REINTENTAR";
+                    btn.disabled = false;
+                    console.error(error);
+                });
+        });
+    </script>
+</body>
+
+</html>

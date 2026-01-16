@@ -1,0 +1,208 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>TechNova | Productos</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="cSS/style.css">
+</head>
+
+<body class="bg-gray-50 pb-20">
+    <nav class="bg-blue-600 p-4 text-white shadow-lg sticky top-0 z-50">
+        <div class="max-w-6xl mx-auto flex justify-between items-center">
+            <h1 class="text-2xl font-black italic">TechNova Shop</h1>
+            <div class="space-x-6">
+                <a href="Index.html">Inicio</a>
+                <a href="productos.html" class="underline">Productos</a>
+                <a href="registro.html">Registro</a>
+            </div>
+        </div>
+    </nav>
+
+    <main class="max-w-6xl mx-auto p-6">
+        <div class="my-8">
+            <input type="text" id="search" onkeyup="filter()" placeholder="🔍 Buscar por nombre (ej: Mouse)..."
+                class="w-full p-4 rounded-2xl border-2 border-blue-100 shadow-sm outline-none focus:border-blue-500">
+        </div>
+
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+            <div class="bg-white p-6 rounded-3xl shadow-md border card-item" data-name="mouse gamer pro">
+                <img src="https://images.unsplash.com/photo-1527443224154-c4a3942d3acf?w=300"
+                    class="rounded-2xl mb-4 w-full h-40 object-cover">
+                <h3 class="text-xl font-bold">Mouse Gamer Pro</h3>
+                <p class="text-blue-600 font-black text-2xl my-2">$45.00</p>
+                <button onclick="add('Mouse Gamer Pro', 45)"
+                    class="w-full bg-blue-600 text-white py-3 rounded-xl font-bold hover:bg-blue-700">Añadir al
+                    Carrito</button>
+            </div>
+
+            <div class="bg-white p-6 rounded-3xl shadow-md border card-item" data-name="teclado mecanico">
+                <img src="https://images.unsplash.com/photo-1511467687858-23d96c32e4ae?w=300"
+                    class="rounded-2xl mb-4 w-full h-40 object-cover">
+                <h3 class="text-xl font-bold">Teclado Mecánico</h3>
+                <p class="text-blue-600 font-black text-2xl my-2">$85.00</p>
+                <button onclick="add('Teclado Mecánico', 85)"
+                    class="w-full bg-blue-600 text-white py-3 rounded-xl font-bold hover:bg-blue-700">Añadir al
+                    Carrito</button>
+            </div>
+
+            <!-- Producto 3 -->
+            <div class="bg-white p-6 rounded-3xl shadow-md border card-item" data-name="audifonos surround">
+                <img src="https://images.unsplash.com/photo-1505740420928-5e560c06d30e?w=300"
+                    class="rounded-2xl mb-4 w-full h-40 object-cover">
+                <h3 class="text-xl font-bold">Audífonos Surround 7.1</h3>
+                <p class="text-blue-600 font-black text-2xl my-2">$60.00</p>
+                <button onclick="add('Audífonos Surround 7.1', 60)"
+                    class="w-full bg-blue-600 text-white py-3 rounded-xl font-bold hover:bg-blue-700">Añadir al
+                    Carrito</button>
+            </div>
+
+            <!-- Producto 4 -->
+            <div class="bg-white p-6 rounded-3xl shadow-md border card-item" data-name="monitor gamer">
+                <img src="https://images.unsplash.com/photo-1547119957-632f856dd4c5?w=300"
+                    class="rounded-2xl mb-4 w-full h-40 object-cover">
+                <h3 class="text-xl font-bold">Monitor Gamer 144Hz</h3>
+                <p class="text-blue-600 font-black text-2xl my-2">$250.00</p>
+                <button onclick="add('Monitor Gamer 144Hz', 250)"
+                    class="w-full bg-blue-600 text-white py-3 rounded-xl font-bold hover:bg-blue-700">Añadir al
+                    Carrito</button>
+            </div>
+
+            <!-- Producto 5 -->
+            <div class="bg-white p-6 rounded-3xl shadow-md border card-item" data-name="silla gamer">
+                <img src="https://images.unsplash.com/photo-1598550476439-6847785fcea6?w=300"
+                    class="rounded-2xl mb-4 w-full h-40 object-cover">
+                <h3 class="text-xl font-bold">Silla Gamer Pro</h3>
+                <p class="text-blue-600 font-black text-2xl my-2">$180.00</p>
+                <button onclick="add('Silla Gamer Pro', 180)"
+                    class="w-full bg-blue-600 text-white py-3 rounded-xl font-bold hover:bg-blue-700">Añadir al
+                    Carrito</button>
+            </div>
+
+            <!-- Producto 6 -->
+            <div class="bg-white p-6 rounded-3xl shadow-md border card-item" data-name="microfono streaming">
+                <img src="https://images.unsplash.com/photo-1590602847861-f357a9332bbc?w=300"
+                    class="rounded-2xl mb-4 w-full h-40 object-cover">
+                <h3 class="text-xl font-bold">Micrófono Streaming</h3>
+                <p class="text-blue-600 font-black text-2xl my-2">$95.00</p>
+                <button onclick="add('Micrófono Streaming', 95)"
+                    class="w-full bg-blue-600 text-white py-3 rounded-xl font-bold hover:bg-blue-700">Añadir al
+                    Carrito</button>
+            </div>
+
+            <!-- Producto 7 -->
+            <div class="bg-white p-6 rounded-3xl shadow-md border card-item" data-name="camara web">
+                <img src="https://images.unsplash.com/photo-1626218174358-77b7f9a46058?w=300"
+                    class="rounded-2xl mb-4 w-full h-40 object-cover">
+                <h3 class="text-xl font-bold">Cámara Web HD</h3>
+                <p class="text-blue-600 font-black text-2xl my-2">$40.00</p>
+                <button onclick="add('Cámara Web HD', 40)"
+                    class="w-full bg-blue-600 text-white py-3 rounded-xl font-bold hover:bg-blue-700">Añadir al
+                    Carrito</button>
+            </div>
+
+            <!-- Producto 8 -->
+            <div class="bg-white p-6 rounded-3xl shadow-md border card-item" data-name="alfombrilla rgb">
+                <img src="https://images.unsplash.com/photo-1615663245857-acda5b2a1533?w=300"
+                    class="rounded-2xl mb-4 w-full h-40 object-cover">
+                <h3 class="text-xl font-bold">Alfombrilla RGB XL</h3>
+                <p class="text-blue-600 font-black text-2xl my-2">$25.00</p>
+                <button onclick="add('Alfombrilla RGB XL', 25)"
+                    class="w-full bg-blue-600 text-white py-3 rounded-xl font-bold hover:bg-blue-700">Añadir al
+                    Carrito</button>
+            </div>
+
+            <!-- Producto 9 -->
+            <div class="bg-white p-6 rounded-3xl shadow-md border card-item" data-name="control xbox">
+                <img src="https://images.unsplash.com/photo-1600080972464-8e5d3593745f?w=300"
+                    class="rounded-2xl mb-4 w-full h-40 object-cover">
+                <h3 class="text-xl font-bold">Control Gamer PC</h3>
+                <p class="text-blue-600 font-black text-2xl my-2">$65.00</p>
+                <button onclick="add('Control Gamer PC', 65)"
+                    class="w-full bg-blue-600 text-white py-3 rounded-xl font-bold hover:bg-blue-700">Añadir al
+                    Carrito</button>
+            </div>
+
+            <!-- Producto 10 -->
+            <div class="bg-white p-6 rounded-3xl shadow-md border card-item" data-name="kit teclado mouse">
+                <img src="https://images.unsplash.com/photo-1587033411391-5d9e51cce126?w=300"
+                    class="rounded-2xl mb-4 w-full h-40 object-cover">
+                <h3 class="text-xl font-bold">Kit Teclado + Mouse</h3>
+                <p class="text-blue-600 font-black text-2xl my-2">$55.00</p>
+                <button onclick="add('Kit Teclado + Mouse', 55)"
+                    class="w-full bg-blue-600 text-white py-3 rounded-xl font-bold hover:bg-blue-700">Añadir al
+                    Carrito</button>
+            </div>
+
+            <!-- Producto 11 -->
+            <div class="bg-white p-6 rounded-3xl shadow-md border card-item" data-name="soporte audifonos">
+                <img src="https://images.unsplash.com/photo-1619597455322-4fbbd8202516?w=300"
+                    class="rounded-2xl mb-4 w-full h-40 object-cover">
+                <h3 class="text-xl font-bold">Soporte RGB</h3>
+                <p class="text-blue-600 font-black text-2xl my-2">$30.00</p>
+                <button onclick="add('Soporte RGB', 30)"
+                    class="w-full bg-blue-600 text-white py-3 rounded-xl font-bold hover:bg-blue-700">Añadir al
+                    Carrito</button>
+            </div>
+
+            <!-- Producto 12 -->
+            <div class="bg-white p-6 rounded-3xl shadow-md border card-item" data-name="barra sonido">
+                <img src="https://images.unsplash.com/photo-1545454675-3527b9b9ea1b?w=300"
+                    class="rounded-2xl mb-4 w-full h-40 object-cover">
+                <h3 class="text-xl font-bold">Barra de Sonido</h3>
+                <p class="text-blue-600 font-black text-2xl my-2">$75.00</p>
+                <button onclick="add('Barra de Sonido', 75)"
+                    class="w-full bg-blue-600 text-white py-3 rounded-xl font-bold hover:bg-blue-700">Añadir al
+                    Carrito</button>
+            </div>
+        </div>
+
+        <div class="mt-16 bg-white p-8 rounded-3xl shadow-2xl border-t-8 border-blue-600">
+            <h2 class="text-2xl font-black mb-6">🛒 Tu Carrito</h2>
+            <div id="cart-list" class="space-y-4">
+                <p class="text-gray-400 italic">No hay productos seleccionados.</p>
+            </div>
+            <div class="mt-8 border-t pt-6 flex justify-between items-center">
+                <span class="text-2xl font-bold">Total:</span>
+                <span id="total" class="text-3xl font-black text-blue-600">$0.00</span>
+            </div>
+        </div>
+    </main>
+
+    <script>
+        let cart = [];
+        function add(n, p) {
+            cart.push({ n, p });
+            update();
+        }
+        function del(i) {
+            cart.splice(i, 1);
+            update();
+        }
+        function update() {
+            const list = document.getElementById('cart-list');
+            const total = document.getElementById('total');
+            list.innerHTML = cart.length === 0 ? '<p class="text-gray-400 italic">Vacío.</p>' : '';
+            let s = 0;
+            cart.forEach((item, i) => {
+                s += item.p;
+                list.innerHTML += `<div class="flex justify-between bg-blue-50 p-4 rounded-xl">
+                    <span class="font-bold">${item.n}</span>
+                    <div><span>$${item.p}</span> <button onclick="del(${i})" class="ml-4 text-red-500 font-bold">X</button></div>
+                </div>`;
+            });
+            total.innerText = `$${s.toFixed(2)}`;
+        }
+        function filter() {
+            let val = document.getElementById('search').value.toLowerCase();
+            let cards = document.getElementsByClassName('card-item');
+            Array.from(cards).forEach(c => {
+                c.style.display = c.getAttribute('data-name').includes(val) ? "block" : "none";
+            });
+        }
+    </script>
+</body>
+
+</html>
