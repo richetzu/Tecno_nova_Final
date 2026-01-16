@@ -7,20 +7,20 @@ const DB_PRODUCTOS = [
 
 let carrito = [];
 
-// Función para añadir al carrito
+// Boton  para añadir al carrito
 function agregar(id) {
     const producto = DB_PRODUCTOS.find(p => p.id === id);
     carrito.push(producto);
     actualizarVistaCarrito();
 }
 
-// Función para eliminar del carrito
+// eliminar del carrito
 function eliminar(index) {
     carrito.splice(index, 1);
     actualizarVistaCarrito();
 }
 
-// Actualiza la interfaz del carrito y el total
+// l carrito Total
 function actualizarVistaCarrito() {
     const contenedor = document.getElementById('listaCarrito');
     const totalElemento = document.getElementById('txtTotal');
@@ -47,7 +47,7 @@ function actualizarVistaCarrito() {
     totalElemento.innerText = `$${totalSuma.toFixed(2)}`;
 }
 
-// Lógica del buscador en tiempo real
+//  buscador de la pagina 
 document.getElementById('inputBusqueda')?.addEventListener('keyup', (e) => {
     const busqueda = e.target.value.toLowerCase();
     const tarjetas = document.getElementsByClassName('card-item');

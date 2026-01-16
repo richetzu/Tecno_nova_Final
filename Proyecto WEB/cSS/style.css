@@ -1,14 +1,11 @@
-/* CSS Personalizado para TechNova */
-
-/* Importamos una fuente bonita de Google Fonts */
 @import url('https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;700&display=swap');
 
-/* Aplicamos la fuente a todo el sitio */
+/* fuente para  el sitio */
 body {
     font-family: 'Outfit', sans-serif;
 }
 
-/* Animación suave para la aparición de elementos */
+/* Animación para aparición de elementos */
 @keyframes fadeIn {
     from {
         opacity: 0;
@@ -21,18 +18,18 @@ body {
     }
 }
 
-/* Aplicamos la animación a las tarjetas de productos y al contenido principal */
+/* Se aplica lass tarjetas de productos y al contenido principal */
 .card-item,
 main {
     animation: fadeIn 0.8s ease-out;
 }
 
-/* Efecto especial para los botones al pasar el mouse (Hoover) */
+/* Efecto de movimiento del mouse  */
 button:hover {
     transform: scale(1.05);
-    /* Crece un poquito (5%) */
+
     box-shadow: 0 10px 20px rgba(37, 99, 235, 0.3);
-    /* Sombra azul suave */
+
 }
 
 /* Estilo para las imágenes de los productos */
@@ -42,18 +39,18 @@ button:hover {
 
 .card-item:hover img {
     transform: scale(1.1);
-    /* Zoom suave en la imagen */
+
 }
 
 .card-item {
     overflow: hidden;
-    /* Para que la imagen no se salga al hacer zoom */
+
     transition: all 0.3s ease;
 }
 
 .card-item:hover {
     border-color: #2563eb;
-    /* Borde azul al pasar el mouse */
+
     transform: translateY(-5px);
-    /* Se levanta un poco */
+
 }
